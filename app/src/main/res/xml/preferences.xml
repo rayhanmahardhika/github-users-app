@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:iconSpaceReserved="false">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/key_reminder"
+        android:title="@string/reminder_label"
+        android:iconSpaceReserved="false"
+        app:icon="@drawable/ic_baseline_notifications_24"/>
+
+    <Preference
+        android:defaultValue="false"
+        android:key="@string/key_language"
+        android:icon="@drawable/ic_baseline_language_24_black"
+        android:title="@string/language_label"
+        android:summary="@string/lang_sum"/>
+
+</PreferenceScreen>

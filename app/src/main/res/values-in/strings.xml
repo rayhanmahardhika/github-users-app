@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pengguna Github</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="company_name">Nama Perusahaan</string>
+    <string name="user_name">Nama Pengguna</string>
+    <string name="barier">|</string>
+    <string name="repos">0</string>
+    <string name="repo_label">repo</string>
+    <string name="border">|</string>
+    <string name="followings">diikuti</string>
+    <string name="followers">pengikut</string>
+    <string name="location">Lokasi</string>
+    <string name="attribution">Ikon dibuat oleh Pixel Perfect</string>
+    <string name="githublogo">GithubLogo</string>
+    <string name="search">Cari</string>
+    <string name="search_hint">Masukkan Username</string>
+    <string name="tab_text_1">Pengikut</string>
+    <string name="tab_text_2">Mengikuti</string>
+    <string name="option_label">Pengaturan</string>
+    <string name="affiliation">Tidak Berafiliasi</string>
+    <string name="unknown_location">Lokasi Tidak Diketahui</string>
+    <string name="favorite_label">Favorit</string>
+    <string name="favorite_button">Favorite Button</string>
+    <string name="title_userdetail">Detail Pengguna Github</string>
+    <string name="title_favoriteuserdetail">Detail Pengguna Github Favorit</string>
+    <string name="title_userlist">Daftar Pengguna Github</string>
+    <string name="title_favorite">Pengguna Github Favorite</string>
+    <string name="title_setting">Pengaturan</string>
+    <string name="query_result_ok">Pengguna ditambahkan ke favorit!</string>
+    <string name="query_result_bad">Pengguna gagal ditambahkan!</string>
+    <string name="delete_result_ok">Pengguna dihapus dari favorit!</string>
+    <string name="delete_result_bad">Pengguna gagal dihapus!</string>
+    <string name="query_all_blank">Tidak terdapat pengguna favorit</string>
+    <string name="title_activity_settings">Pengaturan</string>
+    <string name="reminder_header">Pengingat</string>
+    <string name="language_header">Bahasa</string>
+    <string name="reminder_label">Pengingat pada pukul 9:00 AM</string>
+    <string name="language_label">Pilih Bahasa</string>
+    <string name="key_reminder">reminder</string>
+    <string name="lang_sum">Indonesia</string>
+
+    <string name="reminder_notif_title">Pengguna Github</string>
+    <string name="reminder_notif_text">Lihat para profesional terbaru di Github User</string>
+    <string name="reminder_notif_subtext">Ayo cari pengguna terpopuler di Github!</string>
+
+    <string name="set_reminder_label">Pengingat harian dinyalakan!</string>
+    <string name="disable_reminder_label">Pengingat harian dimatikan!</string>
+</resources>
