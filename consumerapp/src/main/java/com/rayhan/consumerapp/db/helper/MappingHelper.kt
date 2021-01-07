@@ -32,18 +32,4 @@ object MappingHelper {
 
         return list
     }
-
-    fun mapCursorToObject(userFavCursor: Cursor?): User {
-        var user = User(null,null,null,null,null)
-        userFavCursor?.apply {
-            moveToFirst()
-            val name =  getString(getColumnIndexOrThrow(DatabaseContract.UserFavoriteColumns.NAME))
-            val username =  getString(getColumnIndexOrThrow(DatabaseContract.UserFavoriteColumns.USERNAME))
-            val avatar =  getString(getColumnIndexOrThrow(DatabaseContract.UserFavoriteColumns.AVATAR))
-            val company =  getString(getColumnIndexOrThrow(DatabaseContract.UserFavoriteColumns.COMPANY))
-            val location =  getString(getColumnIndexOrThrow(DatabaseContract.UserFavoriteColumns.LOCATION))
-            user = User(name, username, avatar, company, location)
-        }
-        return user
-    }
 }

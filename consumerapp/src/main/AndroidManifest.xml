@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rayhan.consumerapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.rayhan.githubuser.READ_DATABASE" />
+    <uses-permission android:name="com.rayhan.githubuser.WRITE_DATABASE" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name=".PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
+
+    <queries>
+        <package android:name="com.rayhan.githubuser" />
+    </queries>
 
 </manifest>

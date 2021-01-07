@@ -29,7 +29,6 @@ class FavoriteActivity : AppCompatActivity() {
         private const val EXTRA_STATE = "EXTRA_STATE"
     }
 
-//    private lateinit var userFavoriteHelper: UserFavoriteHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +36,6 @@ class FavoriteActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         supportActionBar?.title = resources.getString(R.string.title_favorite)
-
-//        userFavoriteHelper = UserFavoriteHelper.getInstance(applicationContext)
-//        userFavoriteHelper.open()
 
         val handlerThread = HandlerThread("DataObserver")
         handlerThread.start()

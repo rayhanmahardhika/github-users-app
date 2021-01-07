@@ -65,4 +65,8 @@
         <activity android:name=".MainActivity" />
     </application>
 
+    <queries>
+        <package android:name="com.rayhan.githubuser" />
+    </queries>
+
 </manifest>
