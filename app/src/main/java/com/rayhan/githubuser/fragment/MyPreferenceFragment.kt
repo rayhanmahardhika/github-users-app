@@ -27,7 +27,7 @@ class MyPreferenceFragment : PreferenceFragmentCompat() {
         reminderPreference.isChecked = reminderReceiver.isAlarmSet(requireContext(), ReminderReceiver.EXTRA_TYPE)
         reminderPreference.setOnPreferenceChangeListener { preference, newValue ->
             if(newValue as Boolean){
-                reminderReceiver.setRepeatingAlarm(requireContext(), "23:06", ReminderReceiver.EXTRA_TYPE)
+                reminderReceiver.setRepeatingAlarm(requireContext(), "09:00", ReminderReceiver.EXTRA_TYPE)
                 reminderPreference.setIcon(R.drawable.ic_baseline_notifications_active_24)
                 Snackbar.make(requireView(), requireContext().resources.getString(R.string.set_reminder_label), Snackbar.LENGTH_SHORT).show()
             } else {
