@@ -1,12 +1,17 @@
 package com.rayhan.githubuser
 
 import android.content.Intent
+import android.database.ContentObservable
+import android.database.ContentObserver
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.rayhan.githubuser.databinding.ActivityFavoriteBinding
+import com.rayhan.githubuser.db.DatabaseContract.UserFavoriteColumns.Companion.CONTENT_URI
 import com.rayhan.githubuser.db.UserFavoriteHelper
 import com.rayhan.githubuser.db.helper.MappingHelper
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +25,13 @@ class FavoriteActivity : AppCompatActivity() {
 
     private var binding: ActivityFavoriteBinding? = null
 
-    private lateinit var userFavoriteHelper: UserFavoriteHelper
+    companion object {
+
+        // saving state key
+        private const val EXTRA_STATE = "EXTRA_STATE"
+    }
+
+//    private lateinit var userFavoriteHelper: UserFavoriteHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +40,28 @@ class FavoriteActivity : AppCompatActivity() {
 
         supportActionBar?.title = resources.getString(R.string.title_favorite)
 
-        userFavoriteHelper = UserFavoriteHelper.getInstance(applicationContext)
-        userFavoriteHelper.open()
+//        userFavoriteHelper = UserFavoriteHelper.getInstance(applicationContext)
+//        userFavoriteHelper.open()
 
-        getUserFavAsync()
+        val handlerThread = HandlerThread("DataObserver")
+        handlerThread.start()
+        val handler = Handler(handlerThread.looper)
+
+        val myObserver = object : ContentObserver(handler) {
+            override fun onChange(selfChange: Boolean) {
+                getUserFavAsync()
+            }
+        }
+
+
+        contentResolver.registerContentObserver(CONTENT_URI, true, myObserver)
+
+        // mengembalikan data ketika sesion di rotasi
+        if (savedInstanceState == null) {
+            getUserFavAsync()
+        } else {
+            savedInstanceState.getParcelableArrayList<User>(EXTRA_STATE)?.also { list = it }
+        }
 
     }
 
@@ -61,7 +90,9 @@ class FavoriteActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.Main) {
             binding?.progressBar?.visibility = View.VISIBLE
             val defferedUser = async(Dispatchers.IO) {
-                MappingHelper.mapCursorToArrayList(userFavoriteHelper.queryAll())
+                // CONTENT_URI = content://com.rayhan.githubuser/favorite
+                val cursor = contentResolver.query(CONTENT_URI, null, null, null, null)
+                MappingHelper.mapCursorToArrayList(cursor)
             }
             binding?.progressBar?.visibility = View.INVISIBLE
 
@@ -78,9 +109,9 @@ class FavoriteActivity : AppCompatActivity() {
         }
     }
 
-    // ketika activity ditutup maka akses database di tutup
-    override fun onDestroy() {
-        super.onDestroy()
-        userFavoriteHelper.close()
+    // save instance list ketika sesion tertutup
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList(EXTRA_STATE, list)
     }
 }

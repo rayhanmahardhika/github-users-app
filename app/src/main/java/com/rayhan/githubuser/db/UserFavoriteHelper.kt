@@ -63,6 +63,19 @@ class UserFavoriteHelper (context: Context) {
                 null)
     }
 
+    // cek username
+    fun selectUserName(uname: String): Cursor? {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "$USERNAME = ?",
+            arrayOf(uname),
+            null,
+            null,
+            null,
+            null)
+    }
+
     // masukan data
     fun insert(values: ContentValues?): Long {
         return database.insert(DATABASE_TABLE, null, values)
@@ -73,17 +86,6 @@ class UserFavoriteHelper (context: Context) {
         return database.delete(DATABASE_TABLE, "$USERNAME = '$uname'", null)
     }
 
-    // cek username
-    fun selectUserName(uname: String): Cursor? {
-        return database.query(
-                DATABASE_TABLE,
-                null,
-                "$USERNAME = ?",
-                arrayOf(uname),
-                null,
-                null,
-                null,
-                null)
-    }
+
 
 }
