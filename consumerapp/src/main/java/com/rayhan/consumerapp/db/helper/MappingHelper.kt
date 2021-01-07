@@ -1,8 +1,8 @@
-package com.rayhan.githubuser.db.helper
+package com.rayhan.consumerapp.db.helper
 
 import android.database.Cursor
-import com.rayhan.githubuser.User
-import com.rayhan.githubuser.db.DatabaseContract
+import com.rayhan.consumerapp.User
+import com.rayhan.consumerapp.db.DatabaseContract
 
 object MappingHelper {
 

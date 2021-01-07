@@ -1,7 +1,6 @@
 package com.rayhan.githubuser
 
 import android.content.Intent
-import android.database.ContentObservable
 import android.database.ContentObserver
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.rayhan.githubuser.databinding.ActivityFavoriteBinding
 import com.rayhan.githubuser.db.DatabaseContract.UserFavoriteColumns.Companion.CONTENT_URI
-import com.rayhan.githubuser.db.UserFavoriteHelper
 import com.rayhan.githubuser.db.helper.MappingHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

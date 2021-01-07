@@ -1,4 +1,4 @@
-package com.rayhan.githubuser
+package com.rayhan.consumerapp
 
 import android.content.ContentValues
 import android.net.Uri
@@ -9,11 +9,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import com.rayhan.githubuser.adapter.SectionsPagerAdapter
-import com.rayhan.githubuser.databinding.ActivityDetailBinding
-import com.rayhan.githubuser.db.DatabaseContract
-import com.rayhan.githubuser.db.DatabaseContract.UserFavoriteColumns.Companion.CONTENT_URI
-import com.rayhan.githubuser.db.helper.MappingHelper
+import com.rayhan.consumerapp.adapter.SectionsPagerAdapter
+import com.rayhan.consumerapp.databinding.ActivityDetailBinding
+import com.rayhan.consumerapp.db.DatabaseContract
+import com.rayhan.consumerapp.db.DatabaseContract.UserFavoriteColumns.Companion.CONTENT_URI
+import com.rayhan.consumerapp.db.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {

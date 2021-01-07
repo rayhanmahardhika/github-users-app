@@ -41,7 +41,6 @@
                 android:name=".PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".DetailFavoriteActivity" />
         <activity
             android:name=".FavoriteActivity"
             android:parentActivityName=".MainActivity">

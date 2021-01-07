@@ -15,17 +15,14 @@ class GithubUserProvider : ContentProvider() {
 
     companion object {
         private const val FAVORITE = 1
-        private const val FAVORITE_ID = 2
-        private const val FAVORITE_UNAME = 3
+        private const val FAVORITE_UNAME = 2
         private val sUriMatcher = UriMatcher(UriMatcher.NO_MATCH)
         private lateinit var userFavoriteHelper: UserFavoriteHelper
         init {
             // content://com.rayhan.githubuser/favorite
             sUriMatcher.addURI(AUTHORITY, TABLE_NAME, FAVORITE)
-            // content://com.rayhan.githubuser/favorite/id
-            sUriMatcher.addURI(AUTHORITY, "$TABLE_NAME/#", FAVORITE_ID)
             // content://com.rayhan.githubuser/favorite/uname
-            sUriMatcher.addURI(AUTHORITY, "$TABLE_NAME/#", FAVORITE_UNAME)
+            sUriMatcher.addURI(AUTHORITY, "$TABLE_NAME/*", FAVORITE_UNAME)
         }
     }
 
