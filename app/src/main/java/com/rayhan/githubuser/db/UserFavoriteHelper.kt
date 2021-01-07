@@ -50,19 +50,6 @@ class UserFavoriteHelper (context: Context) {
                 "$_ID ASC")
     }
 
-    // ambil berdasar ID
-    fun queryById(id: String): Cursor {
-        return database.query(
-                DATABASE_TABLE,
-                null,
-                "$_ID = ?",
-                arrayOf(id),
-                null,
-                null,
-                null,
-                null)
-    }
-
     // cek username
     fun selectUserName(uname: String): Cursor? {
         return database.query(
