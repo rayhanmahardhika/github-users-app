@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -48,6 +49,13 @@ class MainActivity : AppCompatActivity() {
 
 
         contentResolver.registerContentObserver(CONTENT_URI, true, myObserver)
+
+        // mengembalikan data ketika sesion di rotasi
+        if (savedInstanceState == null) {
+            getUserFavAsync()
+        } else {
+            savedInstanceState.getParcelableArrayList<User>(EXTRA_STATE)?.also { list = it }
+        }
     }
 
     // recyclerview handler
@@ -79,6 +87,7 @@ class MainActivity : AppCompatActivity() {
                 val cursor = contentResolver.query(CONTENT_URI, null, null, null, null)
                 MappingHelper.mapCursorToArrayList(cursor)
             }
+            Log.d("asynd", defferedUser.await().get(0).userName.toString())
             binding?.progressBar?.visibility = View.INVISIBLE
 
             val users = defferedUser.await()
@@ -92,5 +101,11 @@ class MainActivity : AppCompatActivity() {
                 showRecyclerList()
             }
         }
+    }
+
+    // save instance list ketika sesion tertutup
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList(EXTRA_STATE, list)
     }
 }
